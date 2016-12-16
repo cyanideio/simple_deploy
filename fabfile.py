@@ -69,10 +69,10 @@ sudo rm -rf /usr/local/bin/_node/
     print('cleaning up')
     run('rm uninstall.sh')
 
-def deploy(repo_name):
+def deploy(repo_name, branch):
     print("Preparing for Deployment")
     run('rm -rf %s' % repo_name)
-    run('git clone git@github.com:BTCChina/%s.git' % repo_name)
+    run('git clone -b %s git@github.com:BTCChina/%s.git' % (branch,repo_name))
     with cd(repo_name):
         run('pwd')
         run('git submodule init')
