@@ -80,10 +80,10 @@ def deploy(repo_name, branch):
         run('git submodule foreach git pull origin master')
         run('echo "%(user)s"' % env)
 
-def update(repo_name):
+def update(repo_name, branch):
     with cd(repo_name):
         run('git submodule update')
-        run('git submodule foreach git pull origin master')
+        run('git submodule foreach git pull origin %s' % branch)
         run('git pull')
 
 def npm_install(repo_name):
